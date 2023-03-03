@@ -1,0 +1,27 @@
+{%extends 'base.html' %}
+
+  {%block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                {%if article.image == "http://default"%}
+                <h1>Detail article</h1>
+                <img src="https://via.placeholder.com/400x300" style="max-width: 600px; max-height: 400px;">
+                <h2>{{article.title}}</h2>
+                <p>{{article.desc}}</p>
+                 {%else%}
+                <h1>Detail article</h1>
+                <img src="{{article.image.url}}" style="max-width: 600px; max-height: 400px;">
+                <h2>{{article.title}}</h2>
+                <p>{{article.desc}}</p>
+                {%endif%}
+            </div>
+
+            <div class="col-md-4">
+                <h1>Les articles en relations</h1>
+            </div>
+        </div>
+    </div>
+
+ {% endblock %}
+

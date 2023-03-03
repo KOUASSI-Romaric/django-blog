@@ -1,0 +1,36 @@
+{%extends 'base.html' %}
+{%block content %}
+    <!-- Start your project here-->
+    <h1 class="text-center mt-3">Welcomme at blog of Genius</h1>
+
+    <diV class="container">
+      <div class="row">
+
+        {%for article in list_article %}
+        <div class="col-12 col-md-6 col-lg-3 col-xl-3">
+          <div class="card ">
+              {%if article.image == "http://default"%}
+              <a href="{%url 'detail' article.id%}">
+                <img class="card-img-top" src="https://via.placeholder.com/400x300" alt="Card image cap" style="height: 150px"/>
+            </a>
+              {%else%}
+            <a href="{%url 'detail' article.id%}">
+                <img class="card-img-top" src="{{article.image.url}}" alt="Card image cap" style="height: 150px"/>
+            </a>
+            {%endif%}
+          <div class="card-body" style="height:230px">
+            <h5 class="card-title"><a href="{%url 'detail' article.id%}">{{article.title}}</a></h5>
+
+            <p class="card-text">{{article.desc|truncatewords:8}}</p>
+
+            <p class="card-text">Publier il y a {{article.create_at|timesince}}</p>
+            <a href="{%url 'detail' article.id%}" class="btn btn-primary">Lire la suite</a>
+          </div>
+        </div>
+        </div>
+        {%endfor%}
+      </div>
+    </diV>
+    <br>
+{% endblock %}
+
